@@ -18,7 +18,7 @@ import org.testng.Assert;
 public class Contact_Us_Steps {
     private WebDriver driver;
 
-    @Before
+    @Before("@contact-us")
     public void setup() {
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/drivers/chromedriver");
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -27,7 +27,7 @@ public class Contact_Us_Steps {
         this.driver.manage().window().maximize();
     }
 
-    @After
+    @After("@contact-us")
     public void tearDown() {
         this.driver.quit();
     }
@@ -59,6 +59,26 @@ public class Contact_Us_Steps {
     @And("I enter a unique comment")
     public void i_enter_a_unique_comment() {
         driver.findElement(By.xpath("//textarea[@name='message']")).sendKeys(generateRandomNumber(200));
+    }
+
+    @When("I enter a specific first name: {word}")
+    public void i_enter_a_specific_first_name(String firstName) {
+        driver.findElement(By.xpath("//input[@name='first_name']")).sendKeys(firstName);
+    }
+
+    @When("I enter a specific last name: {word}")
+    public void i_enter_a_specific_last_name(String lastName) {
+        driver.findElement(By.xpath("//input[@name='last_name']")).sendKeys(lastName);
+    }
+
+    @When("I enter a specific email address: {word}")
+    public void i_enter_a_specific_email_address(String emailAddress) {
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys(emailAddress);
+    }
+
+    @When("I enter a specific comment: {string}")
+    public void i_enter_a_specific_comment(String comment) {
+        driver.findElement(By.xpath("//textarea[@name='message']")).sendKeys(comment);
     }
 
     @And("I click on the submit button")
