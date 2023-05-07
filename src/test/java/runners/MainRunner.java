@@ -8,6 +8,7 @@ import org.testng.annotations.DataProvider;
         tags = "@regression", monochrome = true, dryRun = false,
         plugin = {"pretty", "html:target/cucumber.html", "json:target/cucumber.json"})
 public class MainRunner extends AbstractTestNGCucumberTests {
+
     @Override
     @DataProvider(parallel = true)
     public Object[][] scenarios() {

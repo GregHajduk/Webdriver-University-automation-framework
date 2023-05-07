@@ -7,15 +7,14 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import pageObjects.Base_PO;
 
-import static driver.DriverFactory.getDriver;
-
-public class Login_Steps {
+public class Login_Steps extends Base_PO {
     private WebDriver driver = getDriver();
 
     @Given("the user accesses the webdriver university login page")
     public void the_user_accesses_the_webdriver_university_login_page() {
-        driver.get("http://www.webdriveruniversity.com/Login-Portal/index.html");
+        navigateToURL("http://www.webdriveruniversity.com/Login-Portal/index.html");
     }
 
     @When("enters valid username {word}")
